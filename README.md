@@ -26,7 +26,6 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    mkdir C:\Users\cleme\Downloads\mongo_data_plain
 
    echo mysecretkey > C:\Users\cleme\Downloads\mongo_keys\mongodb-keyfile
-
    ```
 2. Run Containers
 
@@ -42,7 +41,6 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
      -v 'C:\Users\cleme\Downloads\mongo_data_plain:/data/db' `
      -p 27018:27017 `
      percona/percona-server-mongodb:8.0
-
    ```
 3. Create benchmark.js file and paste the following code:
 
