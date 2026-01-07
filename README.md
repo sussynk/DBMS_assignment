@@ -19,8 +19,6 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 
 **Note: Change "cleme" to your username.**
 
-**Pre-made file available to download from this repo.**
-
 1. Create folder and key file
 
    ```
@@ -30,6 +28,8 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 
    echo mysecretkey > C:\Users\cleme\Downloads\mongo_keys\mongodb-keyfile
    ```
+
+   **Note: Pre-made file is available to download directly from this repo.**
 2. Run Containers
 
    ```
@@ -144,7 +144,9 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
 
-   ---
+---
+
+
 
 # Conclusion/Results:
 
