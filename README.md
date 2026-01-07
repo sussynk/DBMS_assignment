@@ -4,11 +4,13 @@ In this experiment, my group will be using [Percona Server for MongoDB](https://
 
 We will be comparing the query speed between encrypted vs non-encrypted setup.
 
-
 # Requirements
 
 1. [Docker Desktop](https://www.docker.com/)
-
+2. Percona Server:
+   ```
+   docker pull percona/percona-server-mongodb:8.0
+   ```
 
 # How to clone setup:
 
@@ -91,8 +93,6 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    }, 3, "bulk_write");
 
    ```
-
-
 4. Create mongo_benchmark.ps1 file (PowerShell script to compare Encrypted vs Non-Encrypted speed) and paste the following code:
 
    ```
