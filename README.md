@@ -44,7 +44,7 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    ```
 3. Create benchmark.js file and paste the following code:
 
-   ```
+   ```javascript
    function timeIt(fn, iters = 5, label = "test") {
      const times = [];
      for (let i = 0; i < iters; i++) {
@@ -93,7 +93,7 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    ```
 4. Create mongo_benchmark.ps1 file (PowerShell script to compare Encrypted vs Non-Encrypted speed) and paste the following code:
 
-   ```
+   ```powershell
    # Copy benchmark.js into both containers
    docker cp C:\Users\cleme\Downloads\benchmark.js mongo_encrypted:/benchmark.js
    docker cp C:\Users\cleme\Downloads\benchmark.js mongo_plain:/benchmark.js
