@@ -151,3 +151,5 @@ Results Table from the csv file:
 | point_read  | 10.6             | 6.8          | 55.88     |
 | aggregation | 1394.8           | 1565.8       | -10.92    |
 | bulk_write  | 179              | 215          | -16.74    |
+
+The Encrypted file uses more time compared to the Plain Unencrypted file.
