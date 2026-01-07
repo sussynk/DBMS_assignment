@@ -43,6 +43,13 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
      -p 27018:27017 `
      percona/percona-server-mongodb:8.0
    ```
+
+   If you want to run the docker command again later but facing errors about name/folder already exist, run the following command to troubleshoot:
+
+   ```
+   docker stop mongo_encrypted mongo_plain
+   docker rm mongo_encrypted mongo_plain
+   ```
 3. Create benchmark.js file and paste the following code:
 
    ```javascript
