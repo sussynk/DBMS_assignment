@@ -24,7 +24,6 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    mkdir C:\Users\cleme\Downloads\mongo_data_plain
 
    echo mysecretkey > C:\Users\cleme\Downloads\mongo_keys\mongodb-keyfile
-
    ```
 2. Run Containers
 
@@ -40,11 +39,9 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
      -v 'C:\Users\cleme\Downloads\mongo_data_plain:/data/db' `
      -p 27018:27017 `
      percona/percona-server-mongodb:8.0
-
    ```
 3. Create benchmark.js file and paste the following code:
 
-   ```
    function timeIt(fn, iters = 5, label = "test") {
      const times = [];
      for (let i = 0; i < iters; i++) {
@@ -89,8 +86,6 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
      }
      bulk.execute();
    }, 3, "bulk_write");
-
-   ```
 
 
 4. Create mongo_benchmark.ps1 file (PowerShell script to compare Encrypted vs Non-Encrypted speed) and paste the following code:
