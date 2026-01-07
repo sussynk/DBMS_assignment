@@ -129,3 +129,9 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 5. Run the PowerShell script and the result will be available at:
 
    `C:\Users\cleme\Downloads\mongo_benchmark_results.csv `
+
+   Incase any issue running the PowerShell script, please run the following command first on PowerShell:
+
+   ```
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
