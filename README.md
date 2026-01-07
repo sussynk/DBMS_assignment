@@ -6,8 +6,9 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 
 # Requirements
 
-1. [Docker Desktop](https://www.docker.com/)
-2. Percona Server:
+1. Windows Machine to run PowerShell Script for benchmarking
+2. [Docker Desktop](https://www.docker.com/)
+3. Percona Server:
 
    ```
    docker pull percona/percona-server-mongodb:8.0
@@ -17,7 +18,11 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 
 # How to clone setup:
 
-**Note: Change "cleme" to your username.**
+**Note:** 
+
+**1. Change "cleme" to your username.**
+
+**2. JavaScript/PowerShell Script code is provided but please generate key/database file manually by running Step 1 and 2. (Unable to upload to GitHub due to file size issues)**
 
 1. Create folder and key file
 
