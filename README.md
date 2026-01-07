@@ -48,11 +48,14 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 3. Create benchmark.js file and paste the following code:
 
    ```javascript
-   function timeIt(fn, iters = 5, label = "test") {
+   async function timeIt(fn, iters = 5, label = "test") {
      const times = [];
      for (let i = 0; i < iters; i++) {
        const start = Date.now();
-       fn();
+       const res = fn();
+       if (res && typeof res.then === 'function') {
+         await res;
+       }
        const end = Date.now();
        times.push(end - start);
      }
@@ -60,39 +63,43 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
      print(`${label},${avg}`);
    }
 
-   // Load data if empty
-   db = connect("mongodb://localhost:27017/test");
-   if (db.bench.count() === 0) {
-     let bulk = db.bench.initializeUnorderedBulkOp();
-     for (let i = 0; i < 100000; i++) {
-       bulk.insert({
-         userId: Math.floor(Math.random()*10000),
-         ts: new Date(),
-         value: Math.random()*1000,
-         tags: ["a","b","c"][Math.floor(Math.random()*3)]
-       });
+   (async function() {
+     // Load data if empty
+     db = connect("mongodb://localhost:27017/test");
+     if (db.bench.count() === 0) {
+       let bulk = db.bench.initializeUnorderedBulkOp();
+       for (let i = 0; i < 100000; i++) {
+         bulk.insert({
+           userId: Math.floor(Math.random()*10000),
+           ts: new Date(),
+           value: Math.random()*1000,
+           tags: ["a","b","c"][Math.floor(Math.random()*3)]
+         });
+       }
+       const r = bulk.execute();
+       if (r && typeof r.then === 'function') await r;
+       db.bench.createIndex({userId:1});
+       db.bench.createIndex({tags:1});
      }
-     bulk.execute();
-     db.bench.createIndex({userId:1});
-     db.bench.createIndex({tags:1});
-   }
 
-   // Benchmarks
-   timeIt(()=>db.bench.find({userId:1234}).limit(100).toArray(), 5, "point_read");
-   timeIt(()=>db.bench.aggregate([
-     {$match:{tags:"a"}},
-     {$group:{_id:"$userId", total:{$sum:"$value"}, cnt:{$sum:1}}},
-     {$sort:{total:-1}},
-     {$limit:1000}
-   ]).toArray(), 5, "aggregation");
-   timeIt(()=>{
-     let bulk = db.bench.initializeUnorderedBulkOp();
-     for (let i=0;i<5000;i++){
-       bulk.insert({userId:i, ts:new Date(), value:Math.random()*1000, tags:"b"});
-     }
-     bulk.execute();
-   }, 3, "bulk_write");
+     // Benchmarks
+     await timeIt(()=>db.bench.find({userId:1234}).limit(100).toArray(), 5, "point_read");
+     await timeIt(()=>db.bench.aggregate([
+       {$match:{tags:"a"}},
+       {$group:{_id:"$userId", total:{$sum:"$value"}, cnt:{$sum:1}}},
+       {$sort:{total:-1}},
+       {$limit:1000}
+     ]).toArray(), 5, "aggregation");
+     await timeIt(()=>{
+       let bulk = db.bench.initializeUnorderedBulkOp();
+       for (let i=0;i<5000;i++){
+         bulk.insert({userId:i, ts:new Date(), value:Math.random()*1000, tags:"b"});
+       }
+       const r2 = bulk.execute();
+       if (r2 && typeof r2.then === 'function') return r2;
+     }, 3, "bulk_write");
 
+   })();
    ```
 4. Create mongo_benchmark.ps1 file (PowerShell script to compare Encrypted vs Non-Encrypted speed) and paste the following code:
 
