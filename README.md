@@ -33,7 +33,7 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 
    echo mysecretkey > C:\Users\cleme\Downloads\mongo_keys\mongodb-keyfile
    ```
-2. Run Containers
+2. Run Docker Containers
 
    ```
    docker run -d --name mongo_encrypted `
