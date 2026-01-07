@@ -143,3 +143,11 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    ---
 
 # Conclusion/Results:
+
+Results Table from the csv file:
+
+| Test        | Encrypted avg ms | Plain avg ms | Delta (%) |
+| ----------- | ---------------- | ------------ | --------- |
+| point_read  | 10.6             | 6.8          | 55.88     |
+| aggregation | 1394.8           | 1565.8       | -10.92    |
+| bulk_write  | 179              | 215          | -16.74    |
