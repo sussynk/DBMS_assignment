@@ -1,5 +1,4 @@
-"Test","Encrypted avg ms","Plain avg ms","Delta (%)"
-"DeprecationWarning: Collection.count() is deprecated. Use countDocuments or estimatedDocumentCount.","0","0","NaN"
-"point_read","10.6","6.8","55.88"
-"aggregation","1394.8","1565.8","-10.92"
-"bulk_write","179","215","-16.74"
+Test,Encrypted avg ms,Plain avg ms,Delta (%)
+point_read,10.6,6.8,55.88
+aggregation,1394.8,1565.8,-10.92
+bulk_write,179,215,-16.74
