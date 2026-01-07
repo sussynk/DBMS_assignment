@@ -133,3 +133,5 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    ```
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
+
+# Conclusion/Results:
