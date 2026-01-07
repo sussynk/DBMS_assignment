@@ -28,8 +28,6 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 
    echo mysecretkey > C:\Users\cleme\Downloads\mongo_keys\mongodb-keyfile
    ```
-
-   **Note: Pre-made file is available to download directly from this repo.**
 2. Run Containers
 
    ```
