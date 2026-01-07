@@ -8,9 +8,14 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
 
 1. [Docker Desktop](https://www.docker.com/)
 2. Percona Server:
+
    ```
    docker pull percona/percona-server-mongodb:8.0
    ```
+
+---
+
+
 
 # How to clone setup:
 
@@ -133,5 +138,8 @@ We will be comparing the query speed between encrypted vs non-encrypted setup.
    ```
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
+
+
+   ---
 
 # Conclusion/Results:
